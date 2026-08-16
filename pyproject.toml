@@ -1,0 +1,99 @@
+[project]
+name = "redscan"
+dynamic = ["version"]
+description = "Multi-model malware triage with static analysis, emulation, and LLM assessment"
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+dependencies = [
+    "huggingface-hub>=0.33.0",
+    "lightgbm>=4.6.0",
+    "numpy>=2.0.0",
+    "nebula",
+    "openai>=3.1.0",
+    "oscrypto",
+    "pefile>=2024.8.26",
+    "pydantic>=2.11.0",
+    "python-magic>=0.4.27",
+    "redump[dotnet,radare2]>=1.0.0",
+    "rich>=14.0.0",
+    "rich-argparse>=1.7.0",
+    "setuptools<81",
+    "signify==0.7.1",
+    "thrember",
+    "torch>=2.1,<3",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.10",
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+redscan = "redscan.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["redscan*"]
+
+[tool.setuptools.dynamic]
+version = { attr = "redscan.__version__" }
+
+[tool.uv.sources]
+thrember = { git = "https://github.com/FutureComputing4AI/EMBER2024.git", rev = "0ef753e81d98bf209f71b03cd331dfc190b5b54d" }
+oscrypto = { git = "https://github.com/wbond/oscrypto.git", rev = "1547f535001ba568b239b8797465536759c742a3" }
+nebula = { git = "https://github.com/dtrizna/nebula.git", rev = "3d3b97e5b079d64371224db3dcfbdf175975e90d" }
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+# --- ruff --------------------------------------------------------------------
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+src = ["redscan", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "F",    # pyflakes
+    "I",    # isort
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "ANN",  # flake8-annotations
+    "PLC",  # pylint conventions (import placement, etc.)
+    "RUF",  # ruff-specific
+]
+ignore = [
+    "ANN401",  # Any is unavoidable at untyped third-party boundaries
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["ANN"]  # test bodies don't need full annotations
+
+# --- mypy --------------------------------------------------------------------
+[tool.mypy]
+python_version = "3.10"
+strict = true
+files = ["redscan"]
+warn_unreachable = true
+
+# These runtime dependencies do not provide complete typing information.
+[[tool.mypy.overrides]]
+module = [
+    "lightgbm",
+    "magic",
+    "nebula",
+    "pefile",
+    "thrember.*",
+]
+ignore_missing_imports = true

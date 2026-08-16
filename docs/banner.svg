@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" viewBox="0 0 1400 360">
+  <title id="title">redscan</title>
+  <desc id="desc">Multi-model malware triage using static analysis, emulation, and AI.</desc>
+
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#28313a" stroke-width="1"/>
+    </pattern>
+    <clipPath id="frame">
+      <rect width="1400" height="360" rx="8"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1400" height="360" fill="#0c1116"/>
+    <rect width="1400" height="360" fill="url(#grid)" opacity="0.42"/>
+
+    <g transform="translate(1140 180)">
+      <path d="M0-112 97-56V56L0 112-97 56V-56Z" fill="#111a20" stroke="#38d6c7" stroke-width="3"/>
+      <circle cx="0" cy="0" r="74" fill="#0c1116" stroke="#3b4852" stroke-width="2"/>
+      <circle cx="0" cy="0" r="46" fill="none" stroke="#34424c" stroke-width="2"/>
+      <circle cx="0" cy="0" r="20" fill="none" stroke="#34424c" stroke-width="2"/>
+      <path d="M0 0V-74A74 74 0 0 1 61-42Z" fill="#38d6c7" opacity="0.12"/>
+      <path d="M0-74V74M-74 0H74" fill="none" stroke="#34424c" stroke-width="2" stroke-dasharray="7 7"/>
+      <path d="M0 0 61-42" fill="none" stroke="#38d6c7" stroke-width="4"/>
+      <path d="M-63-38A74 74 0 0 1 63-38" fill="none" stroke="#38d6c7" stroke-width="3"/>
+      <circle cx="30" cy="-34" r="7" fill="#ff5d5d"/>
+      <circle cx="30" cy="-34" r="13" fill="none" stroke="#ff5d5d" stroke-width="2"/>
+      <circle cx="-37" cy="24" r="6" fill="#d8ff5f"/>
+      <circle cx="0" cy="0" r="7" fill="#f2f5f3"/>
+      <path d="M0-128V-145M0 128V145M-113-65-128-74M113 65 128 74M-113 65-128 74M113-65 128-74" stroke="#53616c" stroke-width="3"/>
+    </g>
+
+    <g font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text x="82" y="208" font-size="92" font-weight="800"><tspan fill="#ff5d5d">RED</tspan><tspan fill="#f2f5f3">SCAN</tspan></text>
+      <text x="88" y="260" fill="#c7d0d7" font-size="32">Model assisted triage through static and dynamic behavior</text>
+    </g>
+
+    <g fill="#53616c">
+      <rect x="24" y="24" width="24" height="3"/>
+      <rect x="24" y="24" width="3" height="24"/>
+      <rect x="1352" y="24" width="24" height="3"/>
+      <rect x="1373" y="24" width="3" height="24"/>
+      <rect x="24" y="333" width="24" height="3"/>
+      <rect x="24" y="312" width="3" height="24"/>
+      <rect x="1352" y="333" width="24" height="3"/>
+      <rect x="1373" y="312" width="3" height="24"/>
+    </g>
+  </g>
+</svg>
